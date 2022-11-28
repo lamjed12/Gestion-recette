@@ -1,5 +1,11 @@
 #Stage 1 - Install dependencies and build the app in a build environment
-FROM debian:latest 
+# Install dependencies
+FROM debian:latest AS build-env
+
+# Add the following two lines
+ARG API_URL
+ENV API_URL=$API_URL
+
 # Install flutter dependencies
 RUN apt-get update
 RUN apt-get install -y curl git wget unzip libgconf-2-4 gdb libstdc++6 libglu1-mesa fonts-droid-fallback lib32stdc++6 python3 sed
